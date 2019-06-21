@@ -427,7 +427,6 @@ rm -f /etc/nginx/sites-enabled/default
 rm -f /etc/nginx/sites-available/default
 wget -q -O /etc/nginx/nginx.conf "$zenon/nginx.conf"
 wget -q -O /etc/nginx/conf.d/vps.conf "$zenon/vps.conf"
-mkdir -p /home/vps/public_html/online
 echo "<?php phpinfo( ); ?>" > /home/vps/public_html/index.html
 echo "<?php phpinfo( ); ?>" > /home/vps/public_html/info.php
 ok "➡ service nginx restart"
@@ -604,7 +603,7 @@ echo -e "\e[32m    #    Nginx          :   80                                   
 echo -e "\e[32m    #                                                            #    "
 echo -e "\e[32m    #                 TOOLS VPN SSH                              #    "
 echo -e "\e[32m    #                                                            #    "
-echo -e "\e[32m    #    Useronline     :   http://$SERVER_IP/online             #    "
+echo -e "\e[32m    #    Useronline     :   http://$SERVER_IP/                   #    "
 echo -e "\e[32m    #    Vnstat         :   http://$SERVER_IP/bandwidth          #    "
 echo -e "\e[32m    #    Webmin         :   http://$SERVER_IP:10000              #    "
 echo -e "\e[32m    #    ConfigVPN      :   http://$SERVER_IP/zenon.ovpn         #    "
