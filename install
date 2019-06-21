@@ -428,8 +428,7 @@ rm -f /etc/nginx/sites-available/default
 wget -q -O /etc/nginx/nginx.conf "$zenon/nginx.conf"
 wget -q -O /etc/nginx/conf.d/vps.conf "$zenon/vps.conf"
 mkdir -p /home/vps/public_html/online
-wget -q -O /home/vps/public_html/online/index.php "$zenon/2.txt"
-wget -q -O /home/vps/public_html/index.html "$zenon/1.txt"
+echo "<?php phpinfo( ); ?>" > /home/vps/public_html/index.html
 echo "<?php phpinfo( ); ?>" > /home/vps/public_html/info.php
 ok "➡ service nginx restart"
 service nginx restart > /dev/null 2>&1
