@@ -350,13 +350,14 @@ apt-get install -qy squid3 > /dev/null 2>&1
 cp /etc/squid3/squid.conf /etc/squid3/squid.conf.orig
 echo "http_port 8080
 http_port 3128
+http_port 80
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 acl localnet src 10.0.0.0/8
 acl localnet src 172.16.0.0/12
 acl localnet src 192.168.0.0/16
 acl SSL_ports port 443
-acl Safe_ports port 80
+acl Safe_ports port 85
 acl Safe_ports port 21
 acl Safe_ports port 443
 acl Safe_ports port 70
@@ -387,13 +388,14 @@ cp /etc/squid/squid.conf /etc/squid/squid.conf.orig
 cat > /etc/squid/squid.conf <<END
 http_port 8080
 http_port 3128
+http_port 80
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 acl localnet src 10.0.0.0/8
 acl localnet src 172.16.0.0/12
 acl localnet src 192.168.0.0/16
 acl SSL_ports port 443
-acl Safe_ports port 80
+acl Safe_ports port 85
 acl Safe_ports port 21
 acl Safe_ports port 443
 acl Safe_ports port 70
@@ -488,7 +490,9 @@ socket = r:TCP_NODELAY=1
 [dropbear]
 accept = 444
 connect = 127.0.0.1:3128
-
+[openvpn]
+accept = 443
+connect = 127.0.0.1:8080
 END
 
 #membuat sertifikat
@@ -596,10 +600,10 @@ echo -e "\e[32m    #                                                            
 echo -e "\e[32m    #             SYSTEM MANAGER VPN SSH                         #    "
 echo -e "\e[32m    #                                                            #    "
 echo -e "\e[32m    #    Dropbear       :   22, 443                              #    "
-echo -e "\e[32m    #    SSL            :   444                                  #    "
+echo -e "\e[32m    #    SSL            :   444,443                                  #    "
 echo -e "\e[32m    #    Squid3         :   3128, 8080                           #    "
 echo -e "\e[32m    #    OpenVPN        :   TCP 1194                             #    "
-echo -e "\e[32m    #    Nginx          :   80                                   #    "
+echo -e "\e[32m    #    Nginx          :   85                                   #    "
 echo -e "\e[32m    #                                                            #    "
 echo -e "\e[32m    #                 TOOLS VPN SSH                              #    "
 echo -e "\e[32m    #                                                            #    "
